@@ -1,0 +1,37 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: <%= ENV["BANCO_DE_DADOS"] || "backend_development" %>
+  username: <%= ENV["USER_NAME"] %>
+  password: <%= ENV["HOST_PASSWORD"] %>
+  host: <%= ENV["HOST_NAME"] %>
+  port: <%= ENV["HOST_PORT"] || 5432 %>
+
+test:
+  <<: *default
+  database: backend_test
+
+production:
+  primary: &primary_production
+    <<: *default
+    database: <%= ENV["BANCO_DE_DADOS"] || "makerflow" %>
+    username: <%= ENV["USER_NAME"] || "makerflow_user" %>
+    password: <%= ENV["HOST_PASSWORD"] %>
+    host: <%= ENV["HOST_NAME"] %>.oregon-postgres.render.com
+    port: <%= ENV["HOST_PORT"] || 5432 %>
+  cache:
+    <<: *primary_production
+    database: <%= ENV["BANCO_DE_DADOS"] %>_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: <%= ENV["BANCO_DE_DADOS"] %>_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: <%= ENV["BANCO_DE_DADOS"] %>_cable
+    migrations_paths: db/cable_migrate
