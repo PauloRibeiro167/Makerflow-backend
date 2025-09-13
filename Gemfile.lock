@@ -75,6 +75,7 @@ GEM
     ast (2.4.3)
     awesome_print (1.9.2)
     base64 (0.3.0)
+    bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.1)
     bigdecimal (3.2.2)
@@ -84,6 +85,7 @@ GEM
       racc
     builder (3.3.0)
     cd (1.0.2)
+    choice (0.2.0)
     clipboard (2.0.0)
     code (0.9.4)
       coderay (~> 1.1)
@@ -154,6 +156,9 @@ GEM
       ruby_engine (~> 2.0)
       ruby_version (~> 1.0)
       wirb (~> 2.0, >= 2.2.1)
+    jbuilder (2.14.1)
+      actionview (>= 7.0.0)
+      activesupport (>= 7.0.0)
     json (2.13.2)
     kamal (2.7.0)
       activesupport (>= 7.0)
@@ -246,6 +251,7 @@ GEM
       rack (>= 1.3)
     rackup (2.2.1)
       rack (>= 3)
+    railroady (1.6.0)
     rails (8.0.2.1)
       actioncable (= 8.0.2.1)
       actionmailbox (= 8.0.2.1)
@@ -264,6 +270,11 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
+    rails-erd (1.7.2)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
@@ -283,6 +294,7 @@ GEM
     regexp_parser (2.11.2)
     reline (0.6.2)
       io-console (~> 0.5)
+    rexml (3.4.4)
     rubocop (1.80.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -311,6 +323,8 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    ruby-graphviz (1.2.5)
+      rexml
     ruby-progressbar (1.13.0)
     ruby_engine (2.0.3)
     ruby_version (1.0.3)
@@ -374,16 +388,21 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bcrypt (~> 3.1.7)
   bootsnap
   brakeman
   colorize
   debug
+  irb (~> 1.4, >= 1.4.1)
   irbtools
+  jbuilder
   kamal
   pg (~> 1.1)
   puma (>= 5.0)
   rack-cors
+  railroady (~> 1.6)
   rails (~> 8.0.2, >= 8.0.2.1)
+  rails-erd (~> 1.7, >= 1.7.2)
   rubocop-rails-omakase
   solid_cable
   solid_cache

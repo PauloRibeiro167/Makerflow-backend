@@ -1,6 +1,6 @@
 class Usuario < ApplicationRecord
   belongs_to :role
-  has_many :membros_da_equipe, dependent: :destroy
+  has_many :membros_da_equipe, class_name: 'MembroDaEquipe', dependent: :destroy
   has_many :user_projects
   has_many :projetos, through: :user_projects
 
